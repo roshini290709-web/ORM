@@ -1,5 +1,5 @@
 # Ex02 Django ORM Web Application
-## Date: 
+## Date: 25-11-2026
 
 ## AIM
 To develop a Django Application to store and retrieve data from a Vehicle Service Database platform using Object Relational Mapping(ORM).
@@ -31,11 +31,53 @@ Apply the migration files of the created app to the database
 Execute Django admin using localhost and create details for 10 entries
 
 ## PROGRAM
+from django.db import models from django.contrib import admin
 
+class Car(models.Model):
 
+car_id = models.CharField(
+    max_length=20,
+    primary_key=True,
+    help_text="Car ID"
+)
+
+brand = models.CharField(max_length=100)
+
+model = models.CharField(max_length=100)
+
+year = models.IntegerField()
+
+price = models.IntegerField()
+
+fuel_type = models.CharField(max_length=50)
+
+quantity = models.IntegerField()
+
+color = models.CharField(max_length=50)
+
+def __str__(self):
+    return self.brand + " " + self.model
+class CarAdmin(admin.ModelAdmin):
+
+list_display = (
+    'car_id',
+    'brand',
+    'model',
+    'year',
+    'price',
+    'fuel_type',
+    'quantity',
+    'color'
+)
+from django.contrib import admin
+
+from django.contrib import admin from .models import Car,CarAdmin
+
+admin.site.register(Car, CarAdmin)
 
 ## OUTPUT
 
+<img width="1591" height="1057" alt="WhatsApp Image 2026-11-25 at 2 02 26 PM" src="https://github.com/user-attachments/assets/d353e887-0b3d-40e1-84ac-a04cc22ba547" />
 
 
 ## RESULT
